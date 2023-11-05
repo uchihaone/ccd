@@ -1,0 +1,71 @@
+/* Hero Style */
+
+.hero {
+  position: relative;
+  width: 100%;
+  max-width: 100vw;
+  height: 100vh;
+  background: rgb(240, 240, 240);
+  display: grid;
+  /* justify-content: center; */
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: center;
+  align-items: start;
+
+  & nav.hero__nav-main {
+    position: relative;
+    width: 100%;
+    max-width: var(--max-width);
+    height: 5rem;
+    background: rgb(200, 0, 0);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+  
+    & .hero__nav-logo {
+      display: flex;
+      justify-items: flex-start;
+    }
+
+    & .hero__nav-theme {
+      display: grid;
+      place-items: center;
+    }
+
+    & > ul {
+      justify-self: end;
+      position: relative;
+      display: inline-flex;
+      gap: 1rem;
+      background-color: blue;
+    }
+
+  } 
+  /* .hero__nav-main */
+  
+  & .hero__body {
+    align-self: center;
+    position: relative;
+    width: 100%;
+    max-width: var(--max-width);
+
+    background: rgb(0, 200, 0);
+    display: grid;
+    /* grid-template-columns: repeat(3, 1fr); */
+    place-items: center;
+    
+  }
+  /* .hero_body */
+
+  .hero__footer {
+    align-self: end;
+    position: relative;
+    width: 100%;
+    max-width: var(--max-width);
+    background-color: yellow;
+    display: grid;
+    place-items: center;
+  }
+
+} 
+/* .hero */
