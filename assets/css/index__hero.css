@@ -1,5 +1,10 @@
 /* Hero Style */
 
+/* :root {
+  --shadow-x: 1px;
+  --shadow-y: 1px;
+} */
+
 .hero {
   position: relative;
   width: 100%;
@@ -17,7 +22,7 @@
     width: 100%;
     max-width: var(--max-width);
     height: 5rem;
-    background: rgb(200, 0, 0);
+    /* background: rgb(200, 0, 0); */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
@@ -37,7 +42,7 @@
       position: relative;
       display: inline-flex;
       gap: 1rem;
-      background-color: blue;
+      /* background-color: blue; */
     }
 
   } 
@@ -49,11 +54,25 @@
     width: 100%;
     max-width: var(--max-width);
 
-    background: rgb(0, 200, 0);
+    /* background: rgb(0, 200, 0); */
     display: grid;
     /* grid-template-columns: repeat(3, 1fr); */
     place-items: center;
     
+    & > span {
+      position: relative;
+      font-size: 3rem;
+      font-weight: 800;
+      width: 100%;
+      max-width: 80vw;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+      text-shadow: var(--shadow-x) var(--shadow-y) 4px #ffffff;
+    }
+
   }
   /* .hero_body */
 
@@ -62,7 +81,7 @@
     position: relative;
     width: 100%;
     max-width: var(--max-width);
-    background-color: yellow;
+    /* background-color: yellow; */
     display: grid;
     place-items: center;
   }

@@ -1,5 +1,6 @@
 /* predefined variables */
 :root {
   --max-width: 1200px;
-  
+  --shadow-x: 1px;
+  --shadow-y: 1px;
 }
