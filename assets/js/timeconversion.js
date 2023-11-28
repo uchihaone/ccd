@@ -40,9 +40,9 @@ function convertTimeToText() {
   let timeLeft = 0;
   // let dayLeft = 0;
   // let remainder_in_seconds = 0;
-  let the_days = [];
-  let the_hours = [];
-  let the_minutes = [];  
+  let the_days = {time_extracted: 0, time_remainder: 0};
+  let the_hours = {time_extracted: 0, time_remainder: 0};
+  let the_minutes = {time_extracted: 0, time_remainder: 0};  
   timeLeft = parseInt((targetDate.getTime() - today.getTime()) / 1000);
   // dayLeft = (timeLeft / 1000);
   
@@ -50,16 +50,22 @@ function convertTimeToText() {
     the_days = setDaysLeft(timeLeft);
     // console.log(days_extracted, days_remainder);
   }
+  
   // console.log(days_remainder, days_remainder);
   if (the_days.time_remainder >= time_section.hour) {
     the_hours = setHoursLeft(the_days.time_remainder);
   }
 
-  if (the_hours.time_remainder >= time_section.minute) {
+  if (the_days.time_remainder < 3600 || the_hours.time_remainder >= time_section.minute) {
     the_minutes = setMinutesLeft(the_hours.time_remainder);
   }
   
   countdown.innerText = `${(the_days.time_extracted > 0) ? the_days.time_extracted + ((the_days.time_extracted > 1) ? " days" : " day") : ""} ${(the_hours.time_extracted > 0) ? " " + the_hours.time_extracted + ((the_hours.time_extracted > 1) ? " hours" : " hour") : ""} ${(the_minutes.time_extracted > 0) ? " : " + the_minutes.time_extracted + ((the_minutes.time_extracted > 1) ? " minutes" : " minute") : ""} ${(the_minutes.time_remainder > 0) ? " : " + the_minutes.time_remainder + ((the_minutes.time_remainder > 1) ? " seconds" : " second") : ""}`;
-  console.log(the_days.time_extracted,'-',the_hours.time_extracted,'-',the_minutes.time_extracted,'-',the_minutes.time_remainder);
+  // console.log(the_days.time_extracted,'-',the_hours.time_extracted,'-',the_minutes.time_extracted,'-',the_minutes.time_remainder);
   
 } // convertTimeToText()
+
+
+
+
+// wwwwwww

@@ -3,6 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Include Three.js library -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
+
+<!-- Include OrbitControls -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/controls/OrbitControls.min.js"></script> -->
+
+<!-- Include GLTFLoader -->
+<!-- <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.min.js"></script> -->
+
+
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./assets/css/index.css">
    <!-- Favicons -->
@@ -23,11 +35,18 @@
    sizes="16x16"
    href="assets/icons/favicon-16x16.png"
  />
+ <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/GLTFLoader.min.js"></script> -->
+
+
  <script src="./assets/js/index.js" defer></script>
  <script src="./assets/js/timeconversion.js" defer></script>
   <title>Christmas Countdown</title>
 </head>
 <body>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.138.3/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.138.3/examples/js/loaders/GLTFLoader.min.js"></script>
+
   <section class="hero">
     <nav class="hero__nav-main">
       <div class="hero__nav-logo">CCD</div>
@@ -40,6 +59,137 @@
     <div class="hero__body">
       <span id="heroCountdown">0 month 1 day 1 hour 1 minute 1 second</span>
     </div>
+    <main>
+      <div id="container3D">
+        <!-- Include Three.js library -->
+
+  <!-- Include GLTFLoader -->
+  <!-- <script src=".js/BufferGeometryUtils.js"></script>
+  <script src=".js/GLTFLoader.js"></script> -->
+
+  <script>
+    // Your Three.js code with GLTFLoader goes here
+    const scene = new THREE.Scene();
+    // const camera = new THREE.PerspectiveCamera(90, 1024/768, 1, 1000);
+    const camera = new THREE.PerspectiveCamera(50, 1024/768, 0.01, 1000);
+    const renderer = new THREE.WebGLRenderer();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Set up GLTFLoader
+    const loader = new THREE.GLTFLoader();
+
+    // Load a GLTF model
+    loader.load('assets/media/models/ccd_001.gltf', function (gltf) {
+      scene.add(gltf.scene);
+    });
+
+    
+//     var camera = new THREE.PerspectiveCamera(70, 
+// window.innerWidth/window.innerHeight, 0.1, 1000 ); // Specify camera type like this
+// camera.position.set(0,2.5,2.5); // Set position like this
+// camera.lookAt(new THREE.Vector3(0,0,0)); // Set look at coordinate like this
+
+    // camera.position.x = -1;
+    // camera.position.y = 1;
+    // camera.position.z = 5;
+    // camera.position.set(0,2.5,2.5);
+    camera.position.set(0.062,2.912,0.0);
+    
+    camera.lookAt(new THREE.Vector3(0,0,0)); 
+
+    // camera.rotation.set(-90, 2.01, 89.95);
+    
+    console.log(camera.rotation);
+
+    // camera.position.set(5, 1, 0);
+
+    const animate = function () {
+      requestAnimationFrame(animate);
+
+      // Your animation code goes here
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+  </script>
+        <!-- <script>
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+          // Instantiate a loader
+const loader = new GLTFLoader();
+
+// Optional: Provide a DRACOLoader instance to decode compressed mesh data
+// const dracoLoader = new DRACOLoader();
+// dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
+// loader.setDRACOLoader( dracoLoader );
+
+// Load a glTF resource
+loader.load(
+	// resource URL
+	'assets/media/models/circle_year.gltf',
+	// called when the resource is loaded
+	function ( gltf ) {
+
+		scene.add( gltf.scene );
+
+		gltf.animations; // Array<THREE.AnimationClip>
+		gltf.scene; // THREE.Group
+		gltf.scenes; // Array<THREE.Group>
+		gltf.cameras; // Array<THREE.Camera>
+		gltf.asset; // Object
+
+	},
+	// called while loading is progressing
+	function ( xhr ) {
+
+		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+	},
+	// called when loading has errors
+	function ( error ) {
+
+		console.log( 'An error happened' );
+
+	}
+);
+        </script> -->
+
+        <!-- <script>
+          // Your Three.js code goes here
+          // For example, create a scene and a cube
+          const scene = new THREE.Scene();
+          const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+          const renderer = new THREE.WebGLRenderer();
+      
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          document.body.appendChild(renderer.domElement);
+      
+          const geometry = new THREE.BoxGeometry();
+          const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+          const cube = new THREE.Mesh(geometry, material);
+      
+          scene.add(cube);
+          camera.position.z = 5;
+      
+          const animate = function () {
+            requestAnimationFrame(animate);
+      
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+      
+            renderer.render(scene, camera);
+          };
+      
+          animate();
+        </script> -->
+
+      </div>
+    </main>
+
+
+    <!-- <script type="module" src="./js/threed.js"></script> -->
     <div class="hero__footer">
       &copy; 2023; All rights reserved.
     </div>
